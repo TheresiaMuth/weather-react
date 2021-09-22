@@ -79,11 +79,18 @@ export default function WeatherData() {
           <div className="col-4 pb-2">
             <div className="row pb-2" id="unit-selection">
               <div className="col">
-                <a href="" className="disabled selectedUnit" id="select-c">
+                <a
+                  href="https://pedantic-boyd-a9b64c.netlify.app/"
+                  className="disabled selectedUnit"
+                  id="select-c"
+                >
                   °C
                 </a>
                 <span>|</span>
-                <a href="" id="select-f">
+                <a
+                  href="https://pedantic-boyd-a9b64c.netlify.app/"
+                  id="select-f"
+                >
                   °F
                 </a>
               </div>
