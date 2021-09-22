@@ -1,0 +1,56 @@
+#current-weather-description,
+#today-max-min {
+  font-size: 24px;
+}
+
+#unit-selection {
+  font-size: 26px;
+}
+
+#current-weather-description {
+  background: rgb(16, 0, 48);
+  z-index: 10;
+}
+
+#current-weather-description,
+#current-weather-icon,
+#current-temperature {
+  line-height: 1;
+}
+
+#felt-like,
+#add-info {
+  font-size: 12px;
+}
+
+#current-temperature {
+  font-size: 84px;
+  font-weight: 100;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#current-weather-icon {
+  font-size: 110px;
+  -webkit-text-stroke: 5px rgb(16, 0, 48);
+}
+
+#select-f,
+#select-c,
+.temp-min {
+  text-decoration: none;
+  color: rgb(134, 132, 158);
+}
+
+.selectedUnit {
+  color: rgb(255, 255, 255) !important;
+  font-weight: 300;
+}
+
+.selectedUnit:hover {
+  cursor: default;
+}
+
+.mycustom {
+  position: relative;
+}

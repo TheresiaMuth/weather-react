@@ -1,0 +1,36 @@
+#city-search {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  margin-left: 4px;
+}
+
+#button-go {
+  visibility: hidden;
+  position: absolute;
+  right: 4px;
+  top: 2px;
+  bottom: 4px;
+  z-index: 9;
+  border: hidden;
+  color: grey;
+}
+
+#button-go:hover {
+  color: rgb(16, 0, 48);
+}
+
+.btn-outline-light:hover {
+  color: rgb(16, 0, 48);
+  background-color: white;
+  border-color: rgb(16, 0, 48);
+}
+
+#current-location-button:active,
+#current-location-button:focus,
+.form-control:active,
+.form-control:focus,
+#button-go:active,
+#button-go:focus {
+  outline: none;
+  box-shadow: none;
+}
