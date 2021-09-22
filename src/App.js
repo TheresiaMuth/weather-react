@@ -10,6 +10,7 @@ function App() {
       <div className="box">
         <Header />
         <WeatherToday />
+        <hr />
         <Forecast />
       </div>
       <Footer />
