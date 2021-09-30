@@ -1,8 +1,16 @@
 import React from "react";
+import UnitSelction from "../UnitSelection";
+import { calculateCelciusToFahrenheit } from "../TemperatureCalculations";
 
 import "./WeatherData.css";
 
 export default function WeatherData(props) {
+  function showTemp(temp) {
+    return !props.unit
+      ? Math.round(calculateCelciusToFahrenheit(temp))
+      : Math.round(temp);
+  }
+
   return (
     props?.weatherData?.showInfo && (
       <div className="row" id="weather-today">
@@ -54,7 +62,7 @@ export default function WeatherData(props) {
                 <div className="col temp-max pe-0">
                   <i className="bi bi-arrow-up fs-5"></i>
                   <span className="temp" id="today-max">
-                    {Math.round(props.weatherData.maxTemperature)}
+                    {showTemp(props.weatherData.maxTemperature)}
                   </span>
                   °
                 </div>
@@ -64,7 +72,7 @@ export default function WeatherData(props) {
                 <div className="col pb-1 pe-0 temp-min">
                   <i className="bi bi-arrow-down fs-5"></i>
                   <span className="temp" id="today-min">
-                    {Math.round(props.weatherData.minTemperature)}
+                    {showTemp(props.weatherData.minTemperature)}
                   </span>
                   °
                 </div>
@@ -75,34 +83,23 @@ export default function WeatherData(props) {
               className="col temp d-flex justify-content-center"
               id="current-temperature"
             >
-              {Math.round(props.weatherData.temperature)}
+              {showTemp(props.weatherData.temperature)}
             </div>
 
             <div className="col-4 pb-2">
               <div className="row pb-2" id="unit-selection">
-                <div className="col">
-                  <a
-                    href="https://pedantic-boyd-a9b64c.netlify.app/"
-                    className="disabled selectedUnit"
-                    id="select-c"
-                  >
-                    °C
-                  </a>
-                  <span>|</span>
-                  <a
-                    href="https://pedantic-boyd-a9b64c.netlify.app/"
-                    id="select-f"
-                  >
-                    °F
-                  </a>
-                </div>
+                <UnitSelction
+                  showCelcius={props.showCelcius}
+                  showFahrenheit={props.showFahrenheit}
+                  unit={props.unit}
+                />
               </div>
 
               <div className="row">
                 <div className="col">
                   Felt like{" "}
                   <span className="temp" id="felt-like">
-                    {Math.round(props.weatherData.feltLike)}
+                    {showTemp(props.weatherData.feltLike)}
                   </span>
                   °
                 </div>
