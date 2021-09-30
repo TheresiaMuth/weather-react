@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Search.css";
 
 export default function Search(props) {
-  const [city, setCity] = useState(props.defaultCity);
+  const [city, setCity] = useState("");
   const [searchIcon, setSearchIcon] = useState("invisible");
 
   function updateCity(event) {

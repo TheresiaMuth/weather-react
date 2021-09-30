@@ -7,7 +7,7 @@ export default function WeatherToday(props) {
   return (
     <div className="WeatherToday">
       <Date date={props.weatherData.date} />
-      <CurrentLocation />
+      <CurrentLocation city={props.weatherData.city} />
       <WeatherData weatherData={props.weatherData} />
     </div>
   );
