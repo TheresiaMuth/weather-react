@@ -1,4 +1,4 @@
-const weatherIconMap = {
+export const weatherIconMap = {
   "01d": "bi-brightness-high",
   "01n": "bi-moon",
   "02d": "bi-cloud-sun",
@@ -18,3 +18,5 @@ const weatherIconMap = {
   "50d": "bi-cloud-haze",
   "50n": "bi-cloud-haze",
 };
+
+export default weatherIconMap;

@@ -2,21 +2,21 @@ import React from "react";
 
 export default function ForecastCard(props) {
   return (
-    <div class="col" id="forecast-card">
-      <div class="card text-center">
-        <div class="card-body">
-          <h5 class="card-title">
-            <i class={props.icon}></i>
+    <div className="col" id="forecast-card">
+      <div className="card text-center">
+        <div className="card-body">
+          <h5 className="card-title">
+            <i className={props.icon}></i>
           </h5>
-          <p class="card-subtitle mb-2">{props.day}</p>
-          <p class="card-text">
-            <span class="col temp-max">
-              <i class="bi bi-arrow-up"></i>
-              <span class="temp">{props.tempmax}</span>°
+          <p className="card-subtitle mb-2">{props.day}</p>
+          <p className="card-text">
+            <span className="col temp-max">
+              <i className="bi bi-arrow-up"></i>
+              <span className="temp">{props.tempmax}</span>°
             </span>
-            <span class="col temp-min">
-              <i class="bi bi-arrow-down"></i>
-              <span class="temp">{props.tempmin}</span>°
+            <span className="col temp-min">
+              <i className="bi bi-arrow-down"></i>
+              <span className="temp">{props.tempmin}</span>°
             </span>
           </p>
         </div>

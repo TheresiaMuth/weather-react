@@ -1,7 +1,26 @@
-import React from "react";
-import "./Header.css";
+import React, { useState } from "react";
+import "./Search.css";
 
-export default function Header() {
+export default function Search(props) {
+  const [city, setCity] = useState(props.defaultCity);
+  const [searchIcon, setSearchIcon] = useState("invisible");
+
+  function updateCity(event) {
+    setCity(event.target.value);
+    if (!event.target.value) {
+      setSearchIcon("invisible");
+    } else {
+      setSearchIcon("visible");
+    }
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    props.handleNameChange(city);
+    setCity("");
+    setSearchIcon("invisible");
+  }
+
   return (
     <div className="row" id="city-selection">
       <div className="col-1">
@@ -15,7 +34,7 @@ export default function Header() {
       </div>
 
       <div className="col-7">
-        <form id="city-searchbar">
+        <form id="city-searchbar" onSubmit={handleSubmit}>
           <div className="input-group mycustom">
             <input
               type="text"
@@ -24,15 +43,16 @@ export default function Header() {
               id="city-search"
               aria-describedby="citySearch"
               placeholder="Search City..."
-              //onInput="displaySearchIcon()"
-              //onChange="displaySearchIcon()"
+              onChange={updateCity}
+              value={city}
             />
             <button
               className="btn btn-outline-light"
               type="button"
               id="button-go"
+              onClick={handleSubmit}
             >
-              <i className="bi bi-search"></i>
+              <i className={`bi bi-search ${searchIcon}`}></i>
             </button>
           </div>
         </form>
