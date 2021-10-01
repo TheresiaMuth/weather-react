@@ -14,11 +14,16 @@ export default function Search(props) {
     }
   }
 
-  function handleSubmit(event) {
+  function handleSubmitCitySearch(event) {
     event.preventDefault();
-    props.handleNameChange(city);
+    props.handleSubmitCitySearch(city);
     setCity("");
     setSearchIcon("invisible");
+  }
+
+  function handleSubmitLocationButton(event) {
+    event.preventDefault();
+    props.handleSubmitLocationButton();
   }
 
   return (
@@ -28,13 +33,14 @@ export default function Search(props) {
           type="button"
           className="btn btn-outline-light"
           id="current-location-button"
+          onClick={handleSubmitLocationButton}
         >
           <i className="bi bi-geo-alt-fill"></i>
         </button>
       </div>
 
       <div className="col-7">
-        <form id="city-searchbar" onSubmit={handleSubmit}>
+        <form id="city-searchbar" onSubmit={handleSubmitCitySearch}>
           <div className="input-group mycustom">
             <input
               type="text"
@@ -50,7 +56,7 @@ export default function Search(props) {
               className="btn btn-outline-light"
               type="button"
               id="button-go"
-              onClick={handleSubmit}
+              onClick={handleSubmitCitySearch}
             >
               <i className={`bi bi-search ${searchIcon}`}></i>
             </button>

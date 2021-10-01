@@ -7,7 +7,6 @@ export default function WeatherDisplay(props) {
   const [celsius, setCelsius] = useState(true);
 
   function showFahrenheit(event) {
-    console.log("ich bin hier");
     event.preventDefault();
     setCelsius(false);
   }

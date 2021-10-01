@@ -3,7 +3,10 @@ import Search from "./components/search/Search.js";
 import WeatherDisplay from "./components/weatherDisplay/WeatherDisplay";
 import Footer from "./components/footer/Footer";
 import Forecast from "./components/forecast/Forecast";
-import { getWeatherByCity } from "./components/weatherDisplay/WeatherAPI";
+import {
+  getWeatherByCity,
+  getWeatherByLocation,
+} from "./components/weatherDisplay/WeatherAPI";
 import { weatherIconMap } from "./components/WeatherIconMap";
 import "./App.css";
 
@@ -27,7 +30,7 @@ function App() {
     });
   }
 
-  function handleNameChange(city) {
+  function handleSubmitCitySearch(city) {
     if (city) {
       getWeatherByCity(city)
         .then((response) => {
@@ -39,11 +42,38 @@ function App() {
     }
   }
 
+  function success(position) {
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+
+    if (position) {
+      getWeatherByLocation(latitude, longitude)
+        .then((response) => {
+          setVariablesByResponse(response);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }
+
+  function getPosition() {
+    navigator.geolocation.getCurrentPosition(success);
+  }
+
+  function handleSubmitLocationButton() {
+    getPosition();
+  }
+
   return (
     <div className="App">
       <div className="container">
         <div className="box">
-          <Search defaultCity="Munich" handleNameChange={handleNameChange} />
+          <Search
+            defaultCity="Munich"
+            handleSubmitCitySearch={handleSubmitCitySearch}
+            handleSubmitLocationButton={handleSubmitLocationButton}
+          />
           <WeatherDisplay weatherData={weatherData} />
           <hr />
           <Forecast />
