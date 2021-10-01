@@ -1,0 +1,23 @@
+.unitSelection {
+  font-size: 24px;
+}
+
+#unit-button {
+  border: hidden;
+  font-size: 28px;
+  padding: 0px 2px 0px 0px;
+  color: rgb(134, 132, 158);
+  font-weight: 200;
+}
+
+#unit-button:disabled {
+  color: rgb(255, 255, 255) !important;
+  font-weight: 300;
+  opacity: 1;
+}
+
+#unit-button:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgb(16, 0, 48);
+  border-color: rgb(16, 0, 48);
+}
