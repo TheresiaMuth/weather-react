@@ -11,3 +11,8 @@ export function getWeatherByLocation(latitude, longitude) {
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`;
   return axios.get(url);
 }
+
+export function getForecastByLocation(latitude, longitude) {
+  let urlForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`;
+  return axios.get(urlForecast);
+}

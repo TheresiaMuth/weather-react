@@ -12,7 +12,7 @@ export default function WeatherData(props) {
   }
 
   return (
-    props?.weatherData?.showInfo && (
+    props?.weatherData?.showWeatherData && (
       <div className="row" id="weather-today">
         <div className="col-4" id="weather-today-left">
           <div className="row position-relative ps-1" id="current-weather">

@@ -2,21 +2,23 @@ import React, { useState } from "react";
 import Search from "./components/search/Search.js";
 import WeatherDisplay from "./components/weatherDisplay/WeatherDisplay";
 import Footer from "./components/footer/Footer";
-import Forecast from "./components/forecast/Forecast";
+import Forecast from "./components/weatherDisplay/forecast/Forecast";
 import {
   getWeatherByCity,
   getWeatherByLocation,
+  getForecastByLocation,
 } from "./components/weatherDisplay/WeatherAPI";
-import { weatherIconMap } from "./components/WeatherIconMap";
+import { weatherIconMap } from "./components/weatherDisplay/WeatherIconMap";
 import "./App.css";
 
 function App() {
-  const [weatherData, setWeatherData] = useState({ showInfo: false });
+  const [weatherData, setWeatherData] = useState({ showWeatherData: false });
+  const [forecastData, setForecastData] = useState({ showForecastData: false });
 
-  function setVariablesByResponse(response) {
+  function setWeatherDataByResponse(response) {
     console.log(response.data);
     setWeatherData({
-      showInfo: true,
+      showWeatherData: true,
       temperature: response.data.main.temp,
       minTemperature: response.data.main.temp_min,
       maxTemperature: response.data.main.temp_max,
@@ -30,11 +32,23 @@ function App() {
     });
   }
 
+  function setForecastDataByResponse(response) {
+    console.log(response.data);
+    setForecastData({
+      showForecastData: true,
+      data: response.data.daily,
+    });
+  }
+
   function handleSubmitCitySearch(city) {
     if (city) {
       getWeatherByCity(city)
         .then((response) => {
-          setVariablesByResponse(response);
+          setWeatherDataByResponse(response);
+          getForecastByLocation(
+            response.data.coord.lat,
+            response.data.coord.lon
+          ).then((response) => setForecastDataByResponse(response));
         })
         .catch((error) => {
           console.error(error);
@@ -49,7 +63,14 @@ function App() {
     if (position) {
       getWeatherByLocation(latitude, longitude)
         .then((response) => {
-          setVariablesByResponse(response);
+          setWeatherDataByResponse(response);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      getForecastByLocation(latitude, longitude)
+        .then((response) => {
+          setForecastDataByResponse(response);
         })
         .catch((error) => {
           console.error(error);
@@ -76,7 +97,7 @@ function App() {
           />
           <WeatherDisplay weatherData={weatherData} />
           <hr />
-          <Forecast />
+          <Forecast forecastData={forecastData} />
         </div>
         <Footer />
       </div>

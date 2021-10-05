@@ -1,6 +1,6 @@
 import React from "react";
 
-const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+export const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
 const months = [
   "JANUARY",
