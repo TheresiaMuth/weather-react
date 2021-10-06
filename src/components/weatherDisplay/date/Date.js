@@ -17,21 +17,23 @@ const months = [
   "DECEMBER",
 ];
 
-export default function Date(props) {
-  let month = months[props?.date?.getMonth()];
-  let dayOfMonth = props?.date?.getDate();
-  let weekday = days[props?.date?.getDay()];
-  let hour = props?.date?.getHours();
+export default function currentDate() {
+  let now = new Date();
+
+  let month = months[now.getMonth()];
+  let dayOfMonth = now.getDate();
+  let weekday = days[now.getDay()];
+  let hour = now.getHours();
   function minute(date) {
     let formatedMinutes =
-      (date?.getMinutes() < 10 ? "0" : "") + date?.getMinutes();
+      (date.getMinutes() < 10 ? "0" : "") + date.getMinutes();
     return formatedMinutes;
   }
 
   return (
     <div className="row">
       <div className="col pt-3 pb-2 ps-3" id="current-date">
-        {weekday} | {month} {dayOfMonth} | {hour}:{minute(props?.date)}
+        {weekday} | {month} {dayOfMonth} | {hour}:{minute(now)}
       </div>
     </div>
   );
