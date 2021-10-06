@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Search from "./components/search/Search.js";
 import WeatherDisplay from "./components/weatherDisplay/WeatherDisplay";
 import Footer from "./components/footer/Footer";
-import Forecast from "./components/weatherDisplay/forecast/Forecast";
+
 import {
   getWeatherByCity,
   getWeatherByLocation,
@@ -95,9 +95,10 @@ function App() {
             handleSubmitCitySearch={handleSubmitCitySearch}
             handleSubmitLocationButton={handleSubmitLocationButton}
           />
-          <WeatherDisplay weatherData={weatherData} />
-          <hr />
-          <Forecast forecastData={forecastData} />
+          <WeatherDisplay
+            weatherData={weatherData}
+            forecastData={forecastData}
+          />
         </div>
         <Footer />
       </div>
