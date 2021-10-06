@@ -12,7 +12,8 @@ export default function WeatherData(props) {
   }
 
   return (
-    props?.weatherData?.showWeatherData && (
+    props?.weatherData?.showWeatherData &&
+    props?.forecastData?.showForecastData && (
       <div className="row" id="weather-today">
         <div className="col-4" id="weather-today-left">
           <div className="row position-relative ps-1" id="current-weather">
@@ -38,9 +39,15 @@ export default function WeatherData(props) {
             </div>
 
             <div className="col-3" id="add-info-rainwind-input">
-              <span id="rain-likelihood">{26}</span> %
+              <span id="rain-likelihood">
+                {Math.round(props.forecastData.hourly[0].pop * 100)}
+              </span>{" "}
+              %
               <br />
-              <span id="wind-speed">{props.weatherData.wind}</span> m/s
+              <span id="wind-speed">
+                {Math.round(props.weatherData.wind * 3.6)}
+              </span>{" "}
+              km/h
             </div>
 
             <div className="col-3" id="add-info-humidityuv">
@@ -52,7 +59,9 @@ export default function WeatherData(props) {
             <div className="col-3" id="add-info-humidityuv-input">
               <span id="humidity">{props.weatherData.humidity}</span> %
               <br />
-              <span id="uv-index">{5}</span>
+              <span id="uv-index">
+                {Math.round(props.forecastData.current.uvi)}
+              </span>
             </div>
           </div>
 
@@ -62,7 +71,7 @@ export default function WeatherData(props) {
                 <div className="col temp-max pe-0">
                   <i className="bi bi-arrow-up fs-5"></i>
                   <span className="temp" id="today-max">
-                    {showTemp(props.weatherData.maxTemperature)}
+                    {showTemp(props.forecastData.daily[0].temp.max)}
                   </span>
                   °
                 </div>
@@ -72,7 +81,7 @@ export default function WeatherData(props) {
                 <div className="col pb-1 pe-0 temp-min">
                   <i className="bi bi-arrow-down fs-5"></i>
                   <span className="temp" id="today-min">
-                    {showTemp(props.weatherData.minTemperature)}
+                    {showTemp(props.forecastData.daily[0].temp.min)}
                   </span>
                   °
                 </div>

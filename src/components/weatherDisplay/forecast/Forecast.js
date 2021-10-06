@@ -3,7 +3,7 @@ import ForecastCard from "./ForecastCard";
 import "./Forecast.css";
 
 export default function Forecast(props) {
-  let forecast = props.forecastData.data;
+  let forecast = props.forecastData.daily;
 
   return (
     props?.forecastData?.showForecastData && (

@@ -36,7 +36,9 @@ function App() {
     console.log(response.data);
     setForecastData({
       showForecastData: true,
-      data: response.data.daily,
+      daily: response.data.daily,
+      current: response.data.current,
+      hourly: response.data.hourly,
     });
   }
 

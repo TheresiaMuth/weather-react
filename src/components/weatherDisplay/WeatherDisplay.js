@@ -23,6 +23,7 @@ export default function WeatherDisplay(props) {
       <CurrentLocation city={props.weatherData.city} />
       <WeatherData
         weatherData={props.weatherData}
+        forecastData={props.forecastData}
         unit={celsius}
         showCelcius={showCelcius}
         showFahrenheit={showFahrenheit}
