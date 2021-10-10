@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Search from "./components/search/Search.js";
 import WeatherDisplay from "./components/weatherDisplay/WeatherDisplay";
 import Footer from "./components/footer/Footer";
@@ -16,7 +16,6 @@ function App() {
   const [forecastData, setForecastData] = useState({ showForecastData: false });
 
   function setWeatherDataByResponse(response) {
-    console.log(response.data);
     setWeatherData({
       showWeatherData: true,
       temperature: response.data.main.temp,
@@ -27,13 +26,11 @@ function App() {
       humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
       icon: weatherIconMap[response.data.weather[0].icon],
-      date: new Date(response.data.dt * 1000),
       city: response.data.name,
     });
   }
 
   function setForecastDataByResponse(response) {
-    console.log(response.data);
     setForecastData({
       showForecastData: true,
       daily: response.data.daily,
@@ -88,12 +85,15 @@ function App() {
     getPosition();
   }
 
+  useEffect(() => {
+    handleSubmitCitySearch("munich");
+  }, []);
+
   return (
     <div className="App">
       <div className="container">
         <div className="box">
           <Search
-            defaultCity="Munich"
             handleSubmitCitySearch={handleSubmitCitySearch}
             handleSubmitLocationButton={handleSubmitLocationButton}
           />

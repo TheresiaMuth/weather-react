@@ -27,7 +27,7 @@ export default function Search(props) {
   }
 
   return (
-    <div className="row" id="city-selection">
+    <div className="row">
       <div className="col-1">
         <button
           type="button"
